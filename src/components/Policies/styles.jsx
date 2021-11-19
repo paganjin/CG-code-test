@@ -25,10 +25,10 @@ export const List = styled.ul`
 	}
 `;
 
+export const Info = styled.h2`
+	text-align: center;
+`;
+
 export const ListItem = styled.li`
 	margin-bottom: 40px;
-	&:hover {
-		box-shadow: 0px 25px 20px rgba(172, 168, 129, 0.2),
-			0px 10px 20px rgba(197, 202, 209, 0.56);
-	}
 `;

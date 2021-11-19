@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	StyledLink,
 	Card,
@@ -12,28 +12,22 @@ import {
 	Logo,
 	LogoContainer,
 	TitleContainer,
-	SubTitleContainer,
+	SmallLogoContainer,
+	MiddleLogoContainer,
 	Title,
 	SubTitle,
 	DetailTitle,
 	DetailContent,
 } from "./styles";
+import { months, POLICY_STATUS } from "./utils/policyConstants";
 
 const Policy = ({ policy }) => {
-	const months = [
-		"JAN",
-		"FEB",
-		"MAR",
-		"APR",
-		"MAY",
-		"JUN",
-		"JUL",
-		"AUG",
-		"SEP",
-		"OCT",
-		"NOV",
-		"DEC",
-	];
+	const [isClicked, setIsClicked] = useState(false);
+
+	const handleClick = (event) => {
+		event.preventDefault();
+		setIsClicked(!isClicked);
+	};
 
 	const dateFormat = (date) => {
 		let current_datetime = new Date(date);
@@ -47,21 +41,21 @@ const Policy = ({ policy }) => {
 	};
 
 	return (
-		<StyledLink>
+		<StyledLink onClick={handleClick} isClicked={isClicked}>
 			<Card>
 				<CardHeader>
-					<ArrowContainer>
-						<Arrow />
+					<ArrowContainer isClicked={isClicked}>
+						<Arrow isClicked={isClicked} />
 					</ArrowContainer>
 					<TitleContainer>
 						<Title>{policy.title}</Title>
-						<SubTitleContainer>
-							<SubTitle>{policy.id}</SubTitle>
-							<SubTitle>
-								{policy.description ? policy.description : null}
-							</SubTitle>
-						</SubTitleContainer>
+						<SubTitle>{`${policy.id} | ${
+							policy.description ? policy.description : null
+						}`}</SubTitle>
 					</TitleContainer>
+					<MiddleLogoContainer>
+						<Logo src={policy.partner.logo} />
+					</MiddleLogoContainer>
 				</CardHeader>
 				<CardContent>
 					<CardDetails>
@@ -83,7 +77,7 @@ const Policy = ({ policy }) => {
 						</CardDetail>
 						<CardDetail>
 							<DetailTitle>Coverage dates</DetailTitle>
-							{policy.status === "active" ? (
+							{policy.status === POLICY_STATUS.ACTIVE ? (
 								<Status primaryButtonColor>
 									{policy.status.toUpperCase()}
 								</Status>
@@ -109,6 +103,9 @@ const Policy = ({ policy }) => {
 							<DetailTitle>Renewal</DetailTitle>
 						</CardDetails>
 					) : null}
+					<SmallLogoContainer>
+						<Logo src={policy.partner.logo} />
+					</SmallLogoContainer>
 				</CardContent>
 			</Card>
 			<LogoContainer>
