@@ -12,10 +12,14 @@ import {
 import { secondaryFontFamily } from "../../styles/fonts";
 import { breakpoints } from "../../styles/breakpoints";
 
+interface IProps {
+	isClicked: boolean;
+}
+
 const BoxShadow =
 	"0px 25px 20px rgba(172, 168, 129, 0.2), 0px 10px 20px rgba(197, 202, 209, 0.56)";
 
-export const StyledLink = styled.div`
+export const StyledLink = styled.div<IProps>`
 	display: flex;
 	width: 100%;
 	border-radius: 3px;
@@ -30,7 +34,7 @@ export const Card = styled.div`
 	flex-direction: column;
 `;
 
-export const ArrowContainer = styled.div`
+export const ArrowContainer = styled.div<IProps>`
 	min-width: 40px;
 	height: 40px;
 	margin: 15px;
@@ -45,7 +49,7 @@ export const ArrowContainer = styled.div`
 	}
 `;
 
-export const Arrow = styled.i`
+export const Arrow = styled.i<IProps>`
 	border: 1px solid black;
 	border-width: 0 3px 3px 0;
 	display: inline-block;
@@ -114,21 +118,24 @@ export const CardDetail = styled.div`
 	justify-content: space-between;
 `;
 
-export const Status = styled.div`
-	color: ${(props) =>
-		props.primaryButtonColor ? primaryButtonColor : secondaryButtonColor};
+export const ActiveStatus = styled.div`
+	color: ${primaryButtonColor};
 	&:after {
 		content: "·";
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		background: ${(props) =>
-			props.primaryButtonColor
-				? primaryButtonColor
-				: secondaryButtonColor};
+		background: ${primaryButtonColor};
 		display: inline-block;
 		line-height: 10px;
 		margin-left: 5px;
+	}
+`;
+
+export const ExpiredStatus = styled(ActiveStatus)`
+	color: ${secondaryButtonColor};
+	&:after {
+		background: ${secondaryButtonColor};
 	}
 `;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import {
 	StyledLink,
 	Card,
@@ -6,7 +6,8 @@ import {
 	CardContent,
 	CardDetails,
 	CardDetail,
-	Status,
+	ActiveStatus,
+	ExpiredStatus,
 	ArrowContainer,
 	Arrow,
 	Logo,
@@ -20,16 +21,20 @@ import {
 	DetailContent,
 } from "./styles";
 import { months, POLICY_STATUS } from "./utils/policyConstants";
+import { PolicyData } from "../../store/actions";
 
-const Policy = ({ policy }) => {
-	const [isClicked, setIsClicked] = useState(false);
+interface Props {
+	policy: PolicyData;
+}
 
-	const handleClick = (event) => {
-		event.preventDefault();
+const Policy: FC<Props> = ({ policy }) => {
+	const [isClicked, setIsClicked] = useState<boolean>(false);
+
+	const handleClick = (): void => {
 		setIsClicked(!isClicked);
 	};
 
-	const dateFormat = (date) => {
+	const dateFormat = (date: string) => {
 		let current_datetime = new Date(date);
 		let formatted_date =
 			current_datetime.getDate() +
@@ -78,13 +83,13 @@ const Policy = ({ policy }) => {
 						<CardDetail>
 							<DetailTitle>Coverage dates</DetailTitle>
 							{policy.status === POLICY_STATUS.ACTIVE ? (
-								<Status primaryButtonColor>
+								<ActiveStatus>
 									{policy.status.toUpperCase()}
-								</Status>
+								</ActiveStatus>
 							) : (
-								<Status secondaryButtonColor>
+								<ExpiredStatus>
 									{policy.status.toUpperCase()}
-								</Status>
+								</ExpiredStatus>
 							)}
 						</CardDetail>
 					</CardDetails>

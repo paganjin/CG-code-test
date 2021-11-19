@@ -2,25 +2,26 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPolicies } from "../../store/action-creators";
 import Policy from "../Policy/Policy";
+import { State } from "../../store/reducers";
 import { Header, List, ListItem, Info } from "./styles";
 
 const Policies = () => {
 	const dispatch = useDispatch();
-	const state = useSelector((state) => state.policy);
+	const data = useSelector((state: State) => state.policy);
 
 	useEffect(() => {
 		dispatch(fetchPolicies());
 	}, []);
 
 	const renderPolicies = () => {
-		if (state.loading) {
+		if (data.loading) {
 			return <Info>Loading</Info>;
 		}
-		if (state.error) {
+		if (data.error) {
 			return <Info>Unable to fetch policies</Info>;
 		}
-		if (state.items.policies) {
-			return state.items.policies.map((policy) => {
+		if (data.items.policies) {
+			return data.items.policies.map((policy) => {
 				return (
 					<ListItem key={policy.id}>
 						<Policy policy={policy} />
