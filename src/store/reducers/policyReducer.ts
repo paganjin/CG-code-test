@@ -1,5 +1,5 @@
 import { POLICY_CONSTRAINTS } from "../action-types";
-import { Action, PolicyState } from "../actions";
+import { Action, IPolicyState } from "../../interfaces/policy";
 
 const initState = {
 	items: {},
@@ -8,9 +8,9 @@ const initState = {
 };
 
 const policyReducer = (
-	state: PolicyState = initState,
+	state: IPolicyState = initState,
 	action: Action
-): PolicyState => {
+): IPolicyState => {
 	switch (action.type) {
 		case POLICY_CONSTRAINTS.FETCH_POLICY_REQUEST:
 			return {

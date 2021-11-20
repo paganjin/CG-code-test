@@ -1,3 +1,48 @@
+## § Features
+
+-   Basics: React + Redux + Typescript + Axios + Styled-components
+
+## § Project Structure
+
+Only `src/` will be elaborated below.
+
+```
+src/
+├── components/
+│   ├── Policies/
+│   │   ├── Policies.tsx
+│   │   └── styles.tsx
+│   └── Policy/
+│   	├── utils/
+│		│	└── policyConstants.ts
+│   	├── Policy.tsx
+│   	└── styles.tsx
+├── GlobalStyle/
+│   └── index.ts
+├── interfaces/
+│   └── policy.d.ts
+├── store/
+│   ├── action-creators/
+│   │   └── index.ts
+│   ├── action-types/
+│   │   └── index.ts
+│   ├── reducers/
+│   │   ├── index.ts
+│   │   └── policyReducer.ts
+│   └── index.js
+├── styles/
+│   ├── breakpoints/
+│   │   └── index.ts
+│   ├── fonts/
+│   │   └── index.js
+│   └── theme/
+│   	└── index.ts
+├── App.tsx
+└── index.tsx
+```
+
+## § Task Requirements:
+
 # Insurance Policy Card
 
 This React project involves creating an insurance policy card component and requesting data from an API endpoint to build a listing of policies.

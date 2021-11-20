@@ -21,13 +21,13 @@ import {
 	DetailContent,
 } from "./styles";
 import { months, POLICY_STATUS } from "./utils/policyConstants";
-import { PolicyData } from "../../store/actions";
+import { IPolicyData } from "../../interfaces/policy";
 
-interface Props {
-	policy: PolicyData;
+interface IProps {
+	policy: IPolicyData;
 }
 
-const Policy: FC<Props> = ({ policy }) => {
+const Policy: FC<IProps> = ({ policy }) => {
 	const [isClicked, setIsClicked] = useState<boolean>(false);
 
 	const handleClick = (): void => {

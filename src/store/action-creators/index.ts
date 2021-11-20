@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { Dispatch } from "redux";
-import { Action } from "../actions";
+import { Action } from "../../interfaces/policy";
 import { POLICY_CONSTRAINTS } from "../action-types";
 
 export const fetchPolicies = () => async (dispatch: Dispatch<Action>) => {

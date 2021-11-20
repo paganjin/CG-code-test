@@ -1,6 +1,6 @@
-import { POLICY_CONSTRAINTS } from "../action-types";
+import { POLICY_CONSTRAINTS } from "../store/action-types";
 
-export interface PolicyData {
+export interface IPolicyData {
 	id: string;
 	type: string;
 	title: string;
@@ -19,12 +19,12 @@ export interface PolicyData {
 	};
 }
 
-export interface Policy {
-	policies?: Array<PolicyData>;
+export interface IPolicy {
+	policies?: Array<IPolicyData>;
 }
 
-export interface PolicyState {
-	items: Policy;
+export interface IPolicyState {
+	items: IPolicy;
 	loading: boolean;
 	error: unknown;
 }
@@ -35,7 +35,7 @@ interface RequestAction {
 
 interface SuccessAction {
 	type: POLICY_CONSTRAINTS.FETCH_POLICY_SUCCESS;
-	payload: Policy;
+	payload: IPolicy;
 }
 
 interface FailureAction {
