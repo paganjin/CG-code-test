@@ -29,12 +29,12 @@ src/
 │   ├── reducers/
 │   │   ├── index.ts
 │   │   └── policyReducer.ts
-│   └── index.js
+│   └── index.ts
 ├── styles/
 │   ├── breakpoints/
 │   │   └── index.ts
 │   ├── fonts/
-│   │   └── index.js
+│   │   └── index.ts
 │   └── theme/
 │   	└── index.ts
 ├── App.tsx
