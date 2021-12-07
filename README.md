@@ -14,7 +14,7 @@ src/
 │   │   └── styles.tsx
 │   └── Policy/
 │   	├── utils/
-│		  │	  └── policyConstants.ts
+│     │   └── policyConstants.ts
 │   	├── Policy.tsx
 │   	└── styles.tsx
 ├── GlobalStyle/
